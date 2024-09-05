@@ -32,15 +32,15 @@ class _SmsPageState extends State<SmsPage> {
               pinputAutovalidateMode: PinputAutovalidateMode.onSubmit,
               showCursor: true,
               onCompleted: (value) async {
-                bool resault = false;
-                resault = await AppApi().verifyNumber(
+                bool result = false;
+                result = await AppApi().verifyNumber(
                     number: widget.number, code: pinController.text);
-                if (resault == true) {
+                if (result == true) {
                   Navigator.of(context).push(MaterialPageRoute(
                     builder: (context) => const FirstrPage(),
                   ));
                 } else {
-                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('خطا')));
+                  ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('خطا')));
                 }
               },
               onSubmitted: (value) {
